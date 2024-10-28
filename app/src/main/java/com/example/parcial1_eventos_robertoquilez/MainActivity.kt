@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(17.dp)
-                .background(Color(0xFFFFC0CB)), // Color rosado
+                .background(Color(0xFFFFC0CB)),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -58,7 +58,10 @@ class MainActivity : ComponentActivity() {
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(20.dp))
-            Button(onClick = { /* Acción para Compra */ }) {
+            Button(onClick = {
+                val intent = Intent(context, ShoppingListActivity::class.java)
+                context.startActivity(intent)
+            }) {
                 Text(text = stringResource(id = R.string.purchase_button))
             }
             Spacer(modifier = Modifier.height(20.dp))

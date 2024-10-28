@@ -1,5 +1,6 @@
 package com.example.parcial1_eventos_robertoquilez
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,12 +35,13 @@ fun TaskScreen() {
     val pendingTasks = remember { mutableStateListOf<String>() }
     val doneTasks = remember { mutableStateListOf<String>() }
     var showPending by remember { mutableStateOf(true) }
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            .background(Color.White)
+            .background(Color(0xFFADD8E6))
     ) {
         TextField(
             value = taskText,
@@ -98,6 +101,13 @@ fun TaskScreen() {
                     }
                 }
             }
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        Button(onClick = {
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }) {
+            Text(stringResource(id = R.string.go_to_main_screen))
         }
     }
 }
