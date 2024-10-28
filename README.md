@@ -26,3 +26,4 @@ Este proyecto es una aplicación móvil desarrollada en Kotlin utilizando Androi
 5. Marca las tareas como completadas o elimínalas según sea necesario.
 
 ## LINK al repositorio:
+https://github.com/Roberquilez/Parcial1_Eventos_RobertoQuilez.git
