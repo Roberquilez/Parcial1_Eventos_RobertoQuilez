@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Parcial1 Eventos</string>
+    <string name="welcome_message">Bienvenido</string>
+    <string name="purchase_button">Compra</string>
+    <string name="tasks_button">Tareas</string>
+    <string name="select_language">Seleccione idioma</string>
+    <string name="new_task">Nueva Tarea</string>
+    <string name="add_task">Añadir Tarea</string>
+    <string name="show_pending">Mostrar Pendientes</string>
+    <string name="show_done">Mostrar Completadas</string>
+    <string name="done">Hecho</string>
+    <string name="delete">Eliminar</string>
+</resources>

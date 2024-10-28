@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,7 +43,7 @@ fun TaskScreen() {
         TextField(
             value = taskText,
             onValueChange = { taskText = it },
-            label = { Text("New Task") },
+            label = { Text(stringResource(id = R.string.new_task)) },
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(8.dp))
@@ -52,16 +53,16 @@ fun TaskScreen() {
                 taskText = ""
             }
         }) {
-            Text("Add Task")
+            Text(stringResource(id = R.string.add_task))
         }
         Spacer(modifier = Modifier.height(8.dp))
         Row {
             Button(onClick = { showPending = true }) {
-                Text("Show Pending")
+                Text(stringResource(id = R.string.show_pending))
             }
             Spacer(modifier = Modifier.width(8.dp))
             Button(onClick = { showPending = false }) {
-                Text("Show Done")
+                Text(stringResource(id = R.string.show_done))
             }
         }
         Spacer(modifier = Modifier.height(8.dp))
@@ -86,13 +87,13 @@ fun TaskScreen() {
                             pendingTasks.remove(task)
                             doneTasks.add(task)
                         }) {
-                            Text("Done")
+                            Text(stringResource(id = R.string.done))
                         }
                     } else {
                         Button(onClick = {
                             doneTasks.remove(task)
                         }) {
-                            Text("Delete")
+                            Text(stringResource(id = R.string.delete))
                         }
                     }
                 }
