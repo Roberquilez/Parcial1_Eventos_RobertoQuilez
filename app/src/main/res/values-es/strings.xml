@@ -17,4 +17,9 @@
     <string name="go_to_main_screen">Ir a la Pantalla Principal</string>
     <string name="new_task">Nueva Tarea</string>
     <string name="add_task">Añadir Tarea</string>
+    <string name="add_task_details">Añadir Detalles de la Tarea</string>
+    <string name="task_details">Detalles de la Tarea</string>
+    <string name="task_date">Fecha de la Tarea</string>
+    <string name="task_priority">Alta Prioridad</string>
+    <string name="cancel">Cancelar</string>
 </resources>

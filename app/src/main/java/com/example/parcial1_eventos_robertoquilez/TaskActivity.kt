@@ -32,9 +32,12 @@ class TaskActivity : ComponentActivity() {
 @Composable
 fun TaskScreen() {
     var taskText by remember { mutableStateOf("") }
+    var taskPriority by remember { mutableStateOf(false) }
+    var taskDate by remember { mutableStateOf("") }
     val pendingTasks = remember { mutableStateListOf<String>() }
     val doneTasks = remember { mutableStateListOf<String>() }
     var showPending by remember { mutableStateOf(true) }
+    var showDialog by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
     Column(
@@ -50,13 +53,8 @@ fun TaskScreen() {
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = {
-            if (taskText.isNotEmpty()) {
-                pendingTasks.add(taskText)
-                taskText = ""
-            }
-        }) {
-            Text(stringResource(id = R.string.add_task))
+        Button(onClick = { showDialog = true }) {
+            Text(stringResource(id = R.string.add_task_details))
         }
         Spacer(modifier = Modifier.height(8.dp))
         Row {
@@ -109,6 +107,49 @@ fun TaskScreen() {
         }) {
             Text(stringResource(id = R.string.go_to_main_screen))
         }
+    }
+
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            title = { Text(stringResource(id = R.string.task_details)) },
+            text = {
+                Column {
+                    TextField(
+                        value = taskDate,
+                        onValueChange = { taskDate = it },
+                        label = { Text(stringResource(id = R.string.task_date)) }
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Checkbox(
+                            checked = taskPriority,
+                            onCheckedChange = { taskPriority = it }
+                        )
+                        Text(stringResource(id = R.string.task_priority))
+                    }
+                }
+            },
+            confirmButton = {
+                Button(onClick = {
+                    if (taskText.isNotEmpty()) {
+                        val taskDetails = "$taskText - ${if (taskPriority) "High Priority" else "Normal Priority"} - $taskDate"
+                        pendingTasks.add(taskDetails)
+                        taskText = ""
+                        taskPriority = false
+                        taskDate = ""
+                        showDialog = false
+                    }
+                }) {
+                    Text(stringResource(id = R.string.add_task))
+                }
+            },
+            dismissButton = {
+                Button(onClick = { showDialog = false }) {
+                    Text(stringResource(id = R.string.cancel))
+                }
+            }
+        )
     }
 }
 

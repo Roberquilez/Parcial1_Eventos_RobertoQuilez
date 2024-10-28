@@ -17,4 +17,9 @@
     <string name="go_to_main_screen">Go to Main Screen</string>
     <string name="new_task">New Task</string>
     <string name="add_task">Add Task</string>
+    <string name="add_task_details">Add Task Details</string>
+    <string name="task_details">Task Details</string>
+    <string name="task_date">Task Date</string>
+    <string name="task_priority">High Priority</string>
+    <string name="cancel">Cancel</string>
 </resources>
